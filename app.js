@@ -8,5 +8,4 @@ app.use(express.static('public'));
 
 app.post('/', function (req, res) {
     res.send('Data received!');
-    console.log(req.body);
 })
