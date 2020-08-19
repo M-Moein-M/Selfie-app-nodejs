@@ -7,17 +7,25 @@
 <body>
 <h2>This is captain speaking</h2>
 <p>Selfie app</p>
+
+<h3 id="latitude">
+loading
+</h3>
+<h3 id="longitude">
+loading
+</h3>
+
 <a href="about.html">Know more about us</a>
 
 <script>
-    if ('geolocation' in navigator) {
-        console.log('geolocation available');
-        navigator.geolocation.getCurrentPosition(position => {
-            console.log(position.coords.latitude);
-            console.log(position.coords.longitude);
+    if('geolocation' in navigator) {
+        console.log('Navigator available');
+        navigator.geolocation.watchPosition((position) => {
+            document.getElementById('latitude').innerText = position.coords.latitude.toString();
+            document.getElementById('longitude').innerText = position.coords.latitude.toString();
         });
     } else {
-        console.log('geolocation not available');
+        console.log('Navigator not available');
     }
 </script>
 </body>
