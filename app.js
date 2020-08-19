@@ -5,3 +5,7 @@ const app = express();
 app.listen(3000, ()=>console.log('listening to port'));
 
 app.use(express.static('public'));
+
+app.post('/', function (req, res) {
+    res.send('Data received!');
+})
