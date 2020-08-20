@@ -22,7 +22,7 @@ loading
         console.log('Navigator available');
         navigator.geolocation.watchPosition((position) => {
             document.getElementById('latitude').innerText = position.coords.latitude.toString();
-            document.getElementById('longitude').innerText = position.coords.latitude.toString();
+            document.getElementById('longitude').innerText = position.coords.longitude.toString();
         });
     } else {
         console.log('Navigator not available');
@@ -47,7 +47,7 @@ loading
         return response.text(); // parses JSON response into native JavaScript objects
     }
 
-    postData('http://localhost:3000/', { answer: 42 })
+    postData('http://localhost:3000/', { answer: 42, time : '37sec' })
         .then(data => {
             console.log(data); // JSON data parsed by `data.json()` call
         });
