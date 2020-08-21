@@ -9,10 +9,10 @@
 <p>Selfie app</p>
 
 <h3 id="latitude">
-loading
+Loading...
 </h3>
 <h3 id="longitude">
-loading
+Loading...
 </h3>
 
 <a href="about.html">Know more about us</a>
@@ -21,8 +21,16 @@ loading
     if('geolocation' in navigator) {
         console.log('Navigator available');
         navigator.geolocation.watchPosition((position) => {
-            document.getElementById('latitude').innerText = position.coords.latitude.toString();
-            document.getElementById('longitude').innerText = position.coords.longitude.toString();
+            let latitude = position.coords.latitude.toFixed(2);
+            let longitude = position.coords.longitude.toFixed(2);
+
+            document.getElementById('latitude').innerText = latitude.toString();
+            document.getElementById('longitude').innerText = longitude.toString();
+
+            postData('http://localhost:3000/', { latitude: latitude, longitude : longitude })
+                .then(data => {
+                    console.log(data); // JSON data parsed by `data.json()` call
+                });
         });
     } else {
         console.log('Navigator not available');
@@ -47,10 +55,7 @@ loading
         return response.text(); // parses JSON response into native JavaScript objects
     }
 
-    postData('http://localhost:3000/', { answer: 42, time : '37sec' })
-        .then(data => {
-            console.log(data); // JSON data parsed by `data.json()` call
-        });
+
 
 </script>
 </body>
