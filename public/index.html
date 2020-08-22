@@ -19,6 +19,7 @@
 <a href="about.html">Know more about us</a>
 
 <script>
+
     if ('geolocation' in navigator) {
         console.log('Navigator available');
         navigator.geolocation.getCurrentPosition((position) => {
@@ -53,7 +54,6 @@
         });
         return response.json(); // parses JSON response into native JavaScript objects
     }
-
 </script>
 </body>
 </html>
