@@ -16,21 +16,20 @@
     Loading...
 </h3>
 
+<button id="send-btn">SEND</button>
+<br>
 <a href="about.html">Know more about us</a>
 
 <script>
-
+    let navAvailable = false;
     if ('geolocation' in navigator) {
+        navAvailable = true;
         console.log('Navigator available');
         navigator.geolocation.getCurrentPosition((position) => {
             let latitude = position.coords.latitude.toFixed(2);
             let longitude = position.coords.longitude.toFixed(2);
             document.getElementById('latitude').innerText = latitude.toString();
             document.getElementById('longitude').innerText = longitude.toString();
-            postData('http://localhost:3000/', {latitude: latitude, longitude: longitude})
-                .then(data => {
-                    console.log(data)
-                });
         });
     } else {
         console.log('Navigator not available');
@@ -54,6 +53,33 @@
         });
         return response.json(); // parses JSON response into native JavaScript objects
     }
+
+    // post the data to the server
+    function sendGeolocation() {
+        navigator.geolocation.getCurrentPosition((position) => {
+            const latitude = position.coords.latitude.toFixed(2);
+            const longitude = position.coords.longitude.toFixed(2);
+            const timeStamp = position.timestamp;
+            const data = {
+                latitude: latitude,
+                longitude: longitude,
+                timeStamp: timeStamp
+            }
+
+            postData('http://localhost:3000/', data)
+                .then(data => {
+                    console.log(data)
+                });
+        });
+    }
+
+    document.getElementById('send-btn').addEventListener('click', function () {
+        if (navAvailable) {
+            sendGeolocation();
+        }
+
+    })
+
 </script>
 </body>
 </html>

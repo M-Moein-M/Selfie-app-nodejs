@@ -12,9 +12,12 @@ app.use(express.json());
 
 /// handling post request
 app.post('/', (req, res) => {
-    let latitude = req.body.latitude;
-    let longitude = req.body.longitude;
-    console.log('lat: ' + latitude.toString() + '\tlon: ' + longitude.toString());
+    const data = req.body;
+    // const latitude = req.body.latitude;
+    // const longitude = req.body.longitude;
+    // const timeStamp = req.body.timeStamp;
+    console.log('\nData received');
+    console.log(JSON.stringify(data));
     res.json({
             status: 'success',
             data: 'geolocation-data'
