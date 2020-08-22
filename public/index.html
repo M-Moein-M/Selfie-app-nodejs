@@ -11,6 +11,7 @@
 <h3 id="latitude">
     Loading...
 </h3>
+
 <h3 id="longitude">
     Loading...
 </h3>
@@ -27,8 +28,8 @@
             document.getElementById('longitude').innerText = longitude.toString();
             postData('http://localhost:3000/', {latitude: latitude, longitude: longitude})
                 .then(data => {
-                console.log(data)
-            });
+                    console.log(data)
+                });
         });
     } else {
         console.log('Navigator not available');
@@ -52,6 +53,7 @@
         });
         return response.json(); // parses JSON response into native JavaScript objects
     }
+
 </script>
 </body>
 </html>
