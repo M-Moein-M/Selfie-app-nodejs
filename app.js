@@ -9,10 +9,16 @@ app.use(express.static('public'));
 // getting the post request
 app.use(express.json());
 
+
 /// handling post request
 app.post('/', (req, res) => {
     let latitude = req.body.latitude;
     let longitude = req.body.longitude;
-    console.log('lat: '+latitude.toString() + '\tlon: '+longitude.toString());
+    console.log('lat: ' + latitude.toString() + '\tlon: ' + longitude.toString());
+    res.json({
+            status: 'success',
+            data: 'geolocation-data'
+        }
+    )
 });
 

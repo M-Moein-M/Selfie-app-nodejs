@@ -9,25 +9,26 @@
 <p>Selfie app</p>
 
 <h3 id="latitude">
-Loading...
+    Loading...
 </h3>
 <h3 id="longitude">
-Loading...
+    Loading...
 </h3>
 
 <a href="about.html">Know more about us</a>
 
 <script>
-    if('geolocation' in navigator) {
+    if ('geolocation' in navigator) {
         console.log('Navigator available');
-        navigator.geolocation.watchPosition((position) => {
+        navigator.geolocation.getCurrentPosition((position) => {
             let latitude = position.coords.latitude.toFixed(2);
             let longitude = position.coords.longitude.toFixed(2);
             document.getElementById('latitude').innerText = latitude.toString();
             document.getElementById('longitude').innerText = longitude.toString();
-            postData('http://localhost:3000/', { latitude: latitude, longitude : longitude })
+            postData('http://localhost:3000/', {latitude: latitude, longitude: longitude})
                 .then(data => {
-                });
+                console.log(data)
+            });
         });
     } else {
         console.log('Navigator not available');
@@ -49,7 +50,7 @@ Loading...
             referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
             body: JSON.stringify(data) // body data type must match "Content-Type" header
         });
-        return response.text(); // parses JSON response into native JavaScript objects
+        return response.json(); // parses JSON response into native JavaScript objects
     }
 </script>
 </body>
