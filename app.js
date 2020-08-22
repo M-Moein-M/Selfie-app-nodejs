@@ -13,11 +13,13 @@ app.use(express.json());
 /// handling post request
 app.post('/', (req, res) => {
     const data = req.body;
-    // const latitude = req.body.latitude;
-    // const longitude = req.body.longitude;
-    // const timeStamp = req.body.timeStamp;
-    console.log('\nData received');
-    console.log(JSON.stringify(data));
+
+    geolocationData.push(data);
+    // console.log('saved' + JSON.stringify(data));
+    console.clear();
+    console.log(geolocationData);
+
+    // send something as respond
     res.json({
             status: 'success',
             data: 'geolocation-data'
@@ -25,3 +27,5 @@ app.post('/', (req, res) => {
     )
 });
 
+// saving the data received from the client
+let geolocationData = [];
