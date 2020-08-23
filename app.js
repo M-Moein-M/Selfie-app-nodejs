@@ -9,7 +9,7 @@ app.listen(3000, () => console.log('listening to port'));
 app.use(express.static('public'));
 
 // getting the post request
-app.use(express.json());
+app.use(express.json({limit:'10mb'}));
 
 // saving the data received from the client using NeDB
 const fileName = 'database.db';

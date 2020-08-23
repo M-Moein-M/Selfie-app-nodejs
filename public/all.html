@@ -30,14 +30,16 @@
 
             const moodDiv = document.createElement('div');
             moodDiv.innerText = item.feeling;
-            newDiv.appendChild(moodDiv);
 
             const dateDiv = document.createElement('div');
             // calculate date using timestamp
             const date = new Date(Math.floor(Number(item.timestamp)));
-            dateDiv.innerText = date;
-            newDiv.appendChild(dateDiv);
+            dateDiv.innerText = date.toDateString();
 
+            const image64 = document.createElement('img');
+            image64.src = item.image64;
+
+            newDiv.append(moodDiv, dateDiv, image64);
             document.getElementById('data-div').appendChild(newDiv);
         }
     }
