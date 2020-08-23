@@ -8,14 +8,14 @@
 <h2>This is captain speaking</h2>
 <p>Selfie app</p>
 
-<h3 id="latitude">
+<h4 id="latitude">
     Loading...
-</h3>
+</h4>
 
-<h3 id="longitude">
+<h4 id="longitude">
     Loading...
-</h3>
-
+</h4>
+<input id="input-text" type="text" placeholder="How do you feel?">
 <button id="send-btn">SEND</button>
 <br>
 <a href="about.html">Know more about us</a>
@@ -60,10 +60,13 @@
             const latitude = position.coords.latitude.toFixed(2);
             const longitude = position.coords.longitude.toFixed(2);
             const timeStamp = Date.now();
+            const inputValue = document.getElementById('input-text').value;
+            const feeling = inputValue ? inputValue : 'NULL';
             const data = {
                 latitude: latitude,
                 longitude: longitude,
-                timeStamp: timeStamp
+                timeStamp: timeStamp,
+                feeling: feeling
             }
 
             postData('http://localhost:3000/', data)
