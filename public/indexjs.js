@@ -2,7 +2,8 @@ function setup() {
     noCanvas();
     const video = createCapture(VIDEO);
     video.size(320, 240);
-
+    const v = document.getElementsByTagName('video')[0];
+    document.getElementById('camera-div').appendChild(v);
 
     let navAvailable = false;
     if ('geolocation' in navigator) {
@@ -46,6 +47,7 @@ function setup() {
             const inputValue = document.getElementById('input-text').value;
             const feeling = inputValue ? inputValue : 'NULL';
             video.loadPixels();
+
             const image64 = video.canvas.toDataURL();
             const data = {
                 latitude: latitude,

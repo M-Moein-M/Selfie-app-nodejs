@@ -1,4 +1,56 @@
-
+*{
+    text-decoration: none;
+}
 #data-div>div{
     margin: 50px;
+}
+
+button{
+    padding: 20px;
+    background-color: skyblue;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    transition-duration: 0.2s;
+}
+
+button:hover{
+    transform: scale(1.1);
+}
+
+#about-paragraph{
+    width: 500px;
+    text-align: justify;
+}
+
+input{
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    margin: 10px 0 10px 0;
+}
+
+
+
+.flex-container{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+p, h1{
+    text-align: center;
+}
+
+#about-paragraph{
+    padding: 20px;
+    font-size: 20px;
+    border: skyblue 2px solid;
+    border-radius: 5px;
+}
+
+label{
+    display: none;
 }

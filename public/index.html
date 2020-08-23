@@ -8,24 +8,30 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h2>SIMPLE SELFIE APPLICATION</h2>
 
-<h4 id="latitude">
-    Loading...
-</h4>
+<h1>SIMPLE SELFIE APPLICATION</h1>
 
-<h4 id="longitude">
-    Loading...
-</h4>
-<input id="input-text" type="text" placeholder="How do you feel?">
-<button id="send-btn">SEND</button>
+<p>Latitude:<span id="latitude">Loading...</span></p>
+<p>Longitude<span id="longitude">Loading...</span></p>
 
-<a href="about.html">
-    <button>Know more about us</button>
-</a>
-<a href="logs/all.html">
-    <button>Get all the data that posted until now</button>
-</a>
+<div class="flex-container">
+    <label for="input-text">input your mood or some text</label>
+    <input id="input-text" type="text" placeholder="How do you feel?">
+    <button id="send-btn" style="width: 120px">SEND</button>
+</div>
+<div class="flex-container">
+<span class="index-link-btn">
+        <a href="about.html">
+            <button>Know more about us</button>
+        </a>
+        <a href="logs/all.html">
+            <button>Get all the data that posted until now</button>
+        </a>
+    </span>
+</div>
+
+<div id="camera-div" class="flex-container">
+</div>
 
 <script src="indexjs.js"></script>
 
