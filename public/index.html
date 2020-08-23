@@ -18,7 +18,9 @@
 <input id="input-text" type="text" placeholder="How do you feel?">
 <button id="send-btn">SEND</button>
 <br>
-<a href="about.html">Know more about us</a>
+
+<a href="about.html"><button>Know more about us</button></a>
+<a href="all.html"><button>Get all the data that posted until now</button></a>
 
 <script>
     let navAvailable = false;
@@ -59,17 +61,17 @@
         navigator.geolocation.getCurrentPosition((position) => {
             const latitude = position.coords.latitude.toFixed(2);
             const longitude = position.coords.longitude.toFixed(2);
-            const timeStamp = Date.now();
+            const timestamp = Date.now();
             const inputValue = document.getElementById('input-text').value;
             const feeling = inputValue ? inputValue : 'NULL';
             const data = {
                 latitude: latitude,
                 longitude: longitude,
-                timeStamp: timeStamp,
+                timestamp: timestamp,
                 feeling: feeling
             }
 
-            postData('http://localhost:3000/', data)
+            postData('http://localhost:3000/api', data)
                 .then(data => {
                     console.log(data)
                 });

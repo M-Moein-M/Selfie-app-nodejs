@@ -18,7 +18,7 @@ dataBase.loadDatabase();
 console.log('Now storing data in '+fileName);
 
 /// handling post request
-app.post('/', (req, res) => {
+app.post('/api', (req, res) => {
     const data = req.body;
 
     dataBase.insert(data);  // save new data to database
@@ -31,3 +31,14 @@ app.post('/', (req, res) => {
     )
 });
 
+
+app.get('/api', function (req, res) {
+    dataBase.find({}, (err, data)=>{
+        if (err){ // just get out
+            res.end();
+            return;
+        }
+        res.json(data);
+    })
+
+})
