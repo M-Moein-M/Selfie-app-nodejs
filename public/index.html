@@ -59,7 +59,7 @@
         navigator.geolocation.getCurrentPosition((position) => {
             const latitude = position.coords.latitude.toFixed(2);
             const longitude = position.coords.longitude.toFixed(2);
-            const timeStamp = position.timestamp;
+            const timeStamp = Date.now();
             const data = {
                 latitude: latitude,
                 longitude: longitude,

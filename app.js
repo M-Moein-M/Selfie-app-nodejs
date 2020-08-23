@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+const Datastore = require('nedb');
+
 // add listener for port 3000
 app.listen(3000, () => console.log('listening to port'));
 
@@ -9,15 +11,17 @@ app.use(express.static('public'));
 // getting the post request
 app.use(express.json());
 
+// saving the data received from the client using NeDB
+const fileName = 'database.db';
+let dataBase = new Datastore(fileName);
+dataBase.loadDatabase();
+console.log('Now storing data in '+fileName);
 
 /// handling post request
 app.post('/', (req, res) => {
     const data = req.body;
 
-    geolocationData.push(data);
-    // console.log('saved' + JSON.stringify(data));
-    console.clear();
-    console.log(geolocationData);
+    dataBase.insert(data);  // save new data to database
 
     // send something as respond
     res.json({
@@ -27,5 +31,3 @@ app.post('/', (req, res) => {
     )
 });
 
-// saving the data received from the client
-let geolocationData = [];
